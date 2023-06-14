@@ -1,12 +1,17 @@
 import GameSavingLoader from '../gameSavingLoader';
 
-test('get saving', async () => {
-  const data = GameSavingLoader.load();
-  expect(data).toEqual({
-    id: 9,
-    created: 1546300800,
-    userInfo: {
-      id: 1, name: 'Hitman', level: 10, points: 2000,
-    },
+test('test saving', (done) => {
+  GameSavingLoader.load().then((saving) => {
+    expect(saving).toEqual({
+      id: 9,
+      created: 1546300800,
+      userInfo: {
+        id: 1,
+        name: 'Hitman',
+        level: 10,
+        points: 2000,
+      },
+    });
+    done();
   });
 });

@@ -3,10 +3,11 @@ import json from './__mocks__/parser';
 
 export default class GameSavingLoader {
   static load() {
-    read()
-      .then((data) => json(data))
-      .then((string) => new Promise((resolve) => {
-        resolve(JSON.parse(string));
-      }));
+    return new Promise((resolve) => {
+      read()
+        .then((data) => json(data))
+        .then((result) => JSON.parse(result))
+        .then((saving) => resolve(saving));
+    });
   }
 }
